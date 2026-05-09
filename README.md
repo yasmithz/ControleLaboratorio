@@ -99,4 +99,5 @@ Para validar o sistema, foi criada uma bateria de testes na classe `Main`. Os te
 4.  Execute a classe `Main.java`.
 
 ---
-**Desenvolvido por:** [SEU NOME AQUI]
+**Desenvolvido por:** yasmithz
+Yasmin Smith Nogueira
