@@ -73,7 +73,108 @@ A base de dados foi projetada para ser robusta, utilizando chaves primárias e e
 Script de Criação e Dados Iniciais
 Tabela de alunos populada com 25 registros e uma lista completa de hardwares básicos e peças de manutenção.
 
-[INSERIR AQUI O PRINT DO SCRIPT SQL NO WORKBENCH]
+```
+DROP DATABASE IF EXISTS controle_laboratorio; 
+CREATE DATABASE controle_laboratorio;
+USE controle_laboratorio;
+
+CREATE TABLE aluno (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    matricula VARCHAR(20) NOT NULL UNIQUE
+);
+
+CREATE TABLE equipamento (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    disponivel BOOLEAN DEFAULT TRUE
+);
+
+CREATE TABLE emprestimo (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_aluno INT NOT NULL,
+    id_equipamento INT NOT NULL,
+    data_emprestimo DATE NOT NULL,
+    data_devolucao DATE,
+    status VARCHAR(20) DEFAULT 'ATIVO',
+    
+    FOREIGN KEY (id_aluno) REFERENCES aluno(id),
+    FOREIGN KEY (id_equipamento) REFERENCES equipamento(id)
+);
+
+INSERT INTO aluno (nome, matricula) VALUES 
+('Aydêe Lauanda', '2026001'),
+('Alessandra Navegantes', '2026002'),
+('Carlos Eduardo Lima', '2026003'),
+('Davi Silva', '2026004'),
+('Eduardo Castro', '2026005'),
+('Fernanda Carvalho', '2026006'),
+('Gabriel Martins', '2026007'),
+('Hudson Henrique', '2026008'),
+('Igor Ribeiro', '2026009'),
+('Juliana Alves', '2026010'),
+('Lucas Carvalho', '2026011'),
+('Mariana Santos', '2026012'),
+('Nicolas Ferreira', '2026013'),
+('Olívia Castro', '2026014'),
+('Pedro Henrique', '2026015'),
+('Quintino Barros', '2026016'),
+('Raiza Nunes', '2026017'),
+('Renan Pinheiro', '2026018'),
+('Thiago Batista', '2026019'),
+('Vilcler Estumano', '2026020'),
+('Vinícius Silva', '2026021'),
+('Wagner Souza', '2026022'),
+('Xavier Nogueira', '2026023'),
+('Yan Monteiro', '2026024'),
+('Zeca Camargo', '2026025');
+
+INSERT INTO equipamento (nome, disponivel) VALUES 
+-- Gabinetes
+('Gabinete ATX Padrão Preto', TRUE),
+('Gabinete Micro-ATX Básico', TRUE),
+('Gabinete ATX com Fonte 200W', TRUE),
+
+('Mouse USB Genérico', TRUE),
+('Teclado ABNT2 USB', TRUE),
+('Kit Teclado e Mouse Sem Fio', TRUE),
+('Monitor AOC 18.5 Polegadas', FALSE), -- Indisponível para teste
+('Monitor Dell 21 Polegadas', TRUE),
+('Cabo de Força Padrão Novo', TRUE),
+('Filtro de Linha 5 Tomadas', TRUE),
+
+('Placa Mãe Gigabyte H310M', TRUE),
+('Processador Intel Core i3 8ª Ger', TRUE),
+('Processador AMD Ryzen 3 3200G', FALSE), -- Indisponível para teste
+('Memória RAM DDR4 8GB 2666MHz', TRUE),
+('Memória RAM DDR3 4GB 1333MHz', TRUE),
+('SSD Kingston 240GB SATA', TRUE),
+('HD Seagate 1TB 7200RPM', TRUE),
+('Fonte ATX 500W Real', TRUE),
+('Placa de Vídeo GT 710 2GB', TRUE),
+
+('Alicate de Crimpagem RJ45', TRUE),
+('Testador de Cabo de Rede', TRUE),
+('Cabo de Rede Azul 2m', TRUE),
+('Switch TP-Link 8 Portas', TRUE),
+
+('Kit de Chaves Philips/Fenda', TRUE),
+('Pulseira Antiestática', TRUE),
+('Limpador de Contato Spray', TRUE);
+
+
+-- 5. Inserindo Empréstimos Iniciais (Para casar com os itens FALSE acima)
+-- Emprestando o Monitor AOC (ID 7) para a Ale (ID 1)
+INSERT INTO emprestimo (id_aluno, id_equipamento, data_emprestimo, status) VALUES 
+(1, 7, CURDATE(), 'ATIVO');
+
+-- Emprestando o Processador Ryzen (ID 14) para o Lucas (ID 11)
+INSERT INTO emprestimo (id_aluno, id_equipamento, data_emprestimo, status) VALUES 
+(11, 14, CURDATE(), 'ATIVO');
+
+select * from aluno;
+select * from equipamento; 
+```
 
 [INSERIR AQUI O PRINT DO RESULTADO DA TABELA (SELECT * FROM EQUIPAMENTO)]
 
