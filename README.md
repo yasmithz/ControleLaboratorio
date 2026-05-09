@@ -38,12 +38,14 @@ Implementação Técnica
 
 Estrutura de Pastas (Padrão DAO)
 A arquitetura foi dividida em camadas para facilitar a manutenção:
-'''src/
+```
+src/
 └── br.edu.ifpa.laboratorio/
     ├── model/      # Classes de Entidade (Representação dos dados)
     ├── dao/        # Persistência (SQL e validação de regras de negócio)
     ├── database/   # Gerenciamento de conexão com o MySQL
-    └── Main.java   # Ponto de entrada e rotina de testes'''
+    └── Main.java   # Ponto de entrada e rotina de testes'.
+ ```
 
 Etapa 1: Modelagem UML
 Antes de escrever a primeira linha de código, estruturamos o sistema visualmente para garantir que todos os requisitos fossem atendidos.
