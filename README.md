@@ -1,103 +1,100 @@
-# 🖥️ Sistema de Controle de Empréstimo de Laboratório
+🖥️ Sistema de Controle de Empréstimo de Laboratório
+Visão Geral do Projeto
+O Sistema de Controle de Empréstimo de Laboratório nasceu da necessidade de organizar o fluxo de materiais em laboratórios de hardware e redes. Em um ambiente acadêmico ou técnico, o controle manual de componentes como gabinetes, periféricos, processadores e cabos é propenso a falhas, perdas e conflitos de agendamento.
 
-Este projeto foi desenvolvido para a disciplina de **Engenharia de Software II**. O objetivo é gerenciar o empréstimo de equipamentos de hardware e redes (gabinetes, periféricos, peças de bancada) para alunos, garantindo a integridade dos dados e o cumprimento das regras de negócio.
+Este sistema atua como um "gerente digital", garantindo que:
 
----
+O administrador saiba exatamente quem está com qual equipamento.
 
-## 🚀 Tecnologias Utilizadas
+Um item não seja emprestado para duas pessoas ao mesmo tempo.
 
-* **Linguagem:** Java 21 (OO)
-* **Banco de Dados:** MySQL 8.0
-* **Modelagem:** Astah UML (Diagramas de Caso de Uso, Classe e Sequência)
-* **IDE:** IntelliJ IDEA
-* **Driver:** MySQL Connector/J 9.x
+O histórico de uso seja preservado para fins de manutenção e inventário.
 
----
+Desenvolvido para a disciplina de Engenharia de Software II, o foco principal foi aplicar os conceitos de modelagem UML, persistência de dados e as melhores práticas de Programação Orientada a Objetos.
 
-## 📋 Regras de Negócio Implementadas (7.1 - 7.4)
+Tecnologias Utilizadas
+Linguagem: Java 21 (JDK 21)
 
-O sistema foi blindado para seguir as seguintes diretrizes:
-* **7.1:** Equipamentos só podem ser emprestados se o status for `disponivel = TRUE`.
-* **7.2:** Ao realizar empréstimo, o sistema gera um registro com status `ATIVO` e marca o equipamento como `disponivel = FALSE`.
-* **7.3:** Na devolução, o registro é atualizado para `FINALIZADO`, a data de devolução é registrada e o equipamento volta a ser `disponivel = TRUE`.
-* **7.4:** O sistema bloqueia empréstimos para alunos ou equipamentos inexistentes, ou itens já ocupados.
+Banco de Dados: MySQL 8.0
 
----
+Modelagem: Astah UML
 
-## 🛠️ Estrutura do Projeto
+IDE: IntelliJ IDEA
 
-O projeto segue o padrão **DAO (Data Access Object)** para organização das camadas:
+Persistência: JDBC com Driver MySQL Connector/J 9.x
 
-```text
+📋 Regras de Negócio (Lógica do Sistema)
+O coração do software foi projetado (blindado) para seguir rigorosamente as diretrizes abaixo:
+
+Disponibilidade: Um equipamento só pode ser emprestado se seu status no banco de dados for disponivel = TRUE.
+Fluxo de Saída: Ao realizar um empréstimo, o sistema cria automaticamente um registro com status ATIVO e altera o status do equipamento para disponivel = FALSE.
+Fluxo de Retorno: Na devolução, o registro de empréstimo é marcado como FINALIZADO, a data de devolução é salva e o equipamento é liberado (disponivel = TRUE) para o próximo aluno.
+Segurança e Integridade: O sistema impede o registro de empréstimos para alunos ou equipamentos que não existam no cadastro, ou caso o item já esteja ocupado.
+Implementação Técnica
+📂 Estrutura de Pastas (Padrão DAO)
+A arquitetura foi dividida em camadas para facilitar a manutenção:
 src/
 └── br.edu.ifpa.laboratorio/
-    ├── model/      # Classes POJO (Aluno, Equipamento, Emprestimo)
-    ├── dao/        # Persistência e Lógica de Banco (AlunoDAO, etc)
-    ├── database/   # Configuração da Conexão JDBC
-    └── Main.java   # Bateria de Testes e Validação
+    ├── model/      # Classes de Entidade (Representação dos dados)
+    ├── dao/        # Persistência (SQL e validação de regras de negócio)
+    ├── database/   # Gerenciamento de conexão com o MySQL
+    └── Main.java   # Ponto de entrada e rotina de testes
 
-## 🛠️ Etapa 1: Modelagem UML
+tapa 1: Modelagem UML
+Antes de escrever a primeira linha de código, estruturamos o sistema visualmente para garantir que todos os requisitos fossem atendidos.
 
-Nesta etapa, definimos o comportamento e a estrutura do sistema antes da codificação.
+1.1 Diagrama de Casos de Uso
+Mostra o que o usuário (Administrador) pode fazer no sistema.
 
-### 1.1 Diagrama de Casos de Uso
-O diagrama de casos de uso ilustra as funcionalidades principais do sistema sob a perspectiva do administrador do laboratório.
+[INSERIR AQUI O PRINT DO DIAGRAMA DE CASOS DE USO]
 
-> **[INSERIR AQUI O PRINT DO DIAGRAMA DE CASOS DE USO DO ASTAH]**
+1.2 Diagrama de Classe
+A planta baixa do sistema, mostrando como as classes se relacionam.
 
-### 1.2 Diagrama de Classe
-Define a estrutura estática do sistema, mostrando as classes `Aluno`, `Equipamento` e `Emprestimo`, além de seus atributos e métodos.
+[INSERIR AQUI O PRINT DO DIAGRAMA DE CLASSE]
 
-> **[INSERIR AQUI O PRINT DO DIAGRAMA DE CLASSE DO ASTAH]**
+1.3 Diagrama de Sequência
+O fluxo de mensagens entre o Java e o Banco de Dados durante um empréstimo.
 
-### 1.3 Diagrama de Sequência
-Mapeia a interação entre os objetos no tempo, detalhando o processo de realizar um empréstimo desde a chamada no `Main` até a atualização no banco de dados via DAOs.
+[INSERIR AQUI O PRINT DO DIAGRAMA DE SEQUÊNCIA]
 
-> **[INSERIR AQUI O PRINT DO DIAGRAMA DE SEQUÊNCIA DO ASTAH]**
+💾 Etapa 2: Banco de Dados (MySQL)
+A base de dados foi projetada para ser robusta, utilizando chaves primárias e estrangeiras para garantir que nenhum empréstimo fique "orfão".
 
----
+Script de Criação e Dados Iniciais
+Tabela de alunos populada com 25 registros e uma lista completa de hardwares básicos e peças de manutenção.
 
-## 💾 Etapa 2: Banco de Dados (MySQL)
+[INSERIR AQUI O PRINT DO SCRIPT SQL NO WORKBENCH]
 
-A estrutura do banco de dados foi planejada para suportar integridade referencial através de chaves estrangeiras.
+[INSERIR AQUI O PRINT DO RESULTADO DA TABELA (SELECT * FROM EQUIPAMENTO)]
 
-### Script SQL e Dados Iniciais
-O script cria o banco `controle_laboratorio`, define as tabelas e insere dados iniciais (25 alunos e diversos equipamentos) para testes de carga e funcionalidade.
+🧪 Etapa 3: Testes e Validação de Regras
+Para provar que a implementação está correta, a classe Main executa uma bateria de testes que valida desde o cadastro até o bloqueio de itens indisponíveis.
 
-> **[INSERIR AQUI O PRINT DO SEU SCRIPT SQL NO MYSQL WORKBENCH]**
-> *Dica: Tire um print que mostre os comandos CREATE TABLE e os comandos INSERT.*
+Cenários Testados:
 
----
+Cadastro: Inserção de novos alunos e equipamentos.
 
-## ☕ Etapa 3: Implementação Java (OO)
+Consulta: Listagem em tempo real de itens livres.
 
-O projeto foi construído seguindo o padrão de arquitetura **DAO (Data Access Object)**, separando a lógica de negócio da persistência de dados.
+Empréstimo: Alteração automática de status no banco.
 
-* **Pacote `model`:** Classes de entidade (POJOs).
-* **Pacote `database`:** Gerenciamento da conexão JDBC com MySQL.
-* **Pacote `dao`:** Lógica de acesso ao banco e validação das regras de negócio 7.1 a 7.4.
+Bloqueio: Tentativa falha de pegar um item que já está com outro aluno.
 
----
+Devolução: Retorno do item ao estoque virtual.
 
-## 🧪 Etapa 4: Testes e Validação
+[INSERIR AQUI O PRINT DO CONSOLE DO INTELLIJ COM OS RESULTADOS]
 
-Para validar o sistema, foi criada uma bateria de testes na classe `Main`. Os testes cobrem:
-1.  Cadastro de novo aluno e equipamento.
-2.  Listagem de equipamentos que estão marcados como disponíveis.
-3.  Realização de um empréstimo válido (marcando o item como indisponível).
-4.  **Bloqueio de segurança:** Tentativa de emprestar um item que já está em uso (o sistema deve negar).
-5.  Registro de devolução (liberando o item para novos empréstimos).
+🚀 Como Rodar o Projeto
+Crie o banco de dados controle_laboratorio usando o script SQL incluso.
 
-> **[INSERIR AQUI O PRINT DO CONSOLE DO INTELLIJ COM O RESULTADO DOS TESTES]**
+Importe o projeto no IntelliJ IDEA.
 
----
+Certifique-se de que o mysql-connector-j está adicionado às dependências (Project Structure > Libraries).
 
-## 🚀 Como Executar
-1.  Importe o banco de dados usando o script SQL fornecido.
-2.  Adicione o driver `mysql-connector-j` às bibliotecas do projeto.
-3.  Configure a senha do seu banco em `ConexaoMySQL.java`.
-4.  Execute a classe `Main.java`.
+Ajuste a senha do seu MySQL no arquivo ConexaoMySQL.java.
 
----
-**Desenvolvido por:** yasmithz
+Execute o arquivo Main.java.
+
+Desenvolvido por:
 Yasmin Smith Nogueira
