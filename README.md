@@ -38,14 +38,14 @@ Implementação Técnica
 
 Estrutura de Pastas (Padrão DAO)
 A arquitetura foi dividida em camadas para facilitar a manutenção:
-src/
+'''src/
 └── br.edu.ifpa.laboratorio/
     ├── model/      # Classes de Entidade (Representação dos dados)
     ├── dao/        # Persistência (SQL e validação de regras de negócio)
     ├── database/   # Gerenciamento de conexão com o MySQL
-    └── Main.java   # Ponto de entrada e rotina de testes
+    └── Main.java   # Ponto de entrada e rotina de testes'''
 
-tapa 1: Modelagem UML
+Etapa 1: Modelagem UML
 Antes de escrever a primeira linha de código, estruturamos o sistema visualmente para garantir que todos os requisitos fossem atendidos.
 
 1.1 Diagrama de Casos de Uso
@@ -63,7 +63,7 @@ O fluxo de mensagens entre o Java e o Banco de Dados durante um empréstimo.
 
 [INSERIR AQUI O PRINT DO DIAGRAMA DE SEQUÊNCIA]
 
-💾 Etapa 2: Banco de Dados (MySQL)
+Etapa 2: Banco de Dados (MySQL)
 A base de dados foi projetada para ser robusta, utilizando chaves primárias e estrangeiras para garantir que nenhum empréstimo fique "orfão".
 
 Script de Criação e Dados Iniciais
@@ -73,7 +73,7 @@ Tabela de alunos populada com 25 registros e uma lista completa de hardwares bá
 
 [INSERIR AQUI O PRINT DO RESULTADO DA TABELA (SELECT * FROM EQUIPAMENTO)]
 
-🧪 Etapa 3: Testes e Validação de Regras
+Etapa 3: Testes e Validação de Regras
 Para provar que a implementação está correta, a classe Main executa uma bateria de testes que valida desde o cadastro até o bloqueio de itens indisponíveis.
 
 Cenários Testados:
@@ -90,7 +90,7 @@ Devolução: Retorno do item ao estoque virtual.
 
 [INSERIR AQUI O PRINT DO CONSOLE DO INTELLIJ COM OS RESULTADOS]
 
-🚀 Como Rodar o Projeto
+Como Rodar o Projeto
 Crie o banco de dados controle_laboratorio usando o script SQL incluso.
 
 Importe o projeto no IntelliJ IDEA.
