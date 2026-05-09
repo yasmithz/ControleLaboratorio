@@ -58,12 +58,14 @@ Mostra o que o usuário (Administrador) pode fazer no sistema.
 1.2 Diagrama de Classe
 A planta baixa do sistema, mostrando como as classes se relacionam.
 
-[INSERIR AQUI O PRINT DO DIAGRAMA DE CLASSE]
+<img width="1024" height="729" alt="image" src="https://github.com/user-attachments/assets/08e64330-f964-4e4b-add0-26f4fe344305" />
+
 
 1.3 Diagrama de Sequência
 O fluxo de mensagens entre o Java e o Banco de Dados durante um empréstimo.
 
-[INSERIR AQUI O PRINT DO DIAGRAMA DE SEQUÊNCIA]
+<img width="1043" height="631" alt="image" src="https://github.com/user-attachments/assets/bafbec0c-6963-4636-b456-f83a9a5a94bf" />
+
 
 Etapa 2: Banco de Dados (MySQL)
 A base de dados foi projetada para ser robusta, utilizando chaves primárias e estrangeiras para garantir que nenhum empréstimo fique "orfão".
