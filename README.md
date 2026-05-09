@@ -23,7 +23,7 @@ IDE: IntelliJ IDEA
 
 Persistência: JDBC com Driver MySQL Connector/J 9.x
 
-📋 Regras de Negócio (Lógica do Sistema)
+Regras de Negócio (Lógica do Sistema)
 O coração do software foi projetado (blindado) para seguir rigorosamente as diretrizes abaixo:
 
 Disponibilidade: Um equipamento só pode ser emprestado se seu status no banco de dados for disponivel = TRUE.
@@ -53,7 +53,7 @@ Antes de escrever a primeira linha de código, estruturamos o sistema visualment
 1.1 Diagrama de Casos de Uso
 Mostra o que o usuário (Administrador) pode fazer no sistema.
 
-[INSERIR AQUI O PRINT DO DIAGRAMA DE CASOS DE USO]
+<img width="799" height="598" alt="image" src="https://github.com/user-attachments/assets/690981ad-c457-46af-b17a-bec1befd0b1c" />
 
 1.2 Diagrama de Classe
 A planta baixa do sistema, mostrando como as classes se relacionam.
