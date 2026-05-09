@@ -27,11 +27,16 @@ Persistência: JDBC com Driver MySQL Connector/J 9.x
 O coração do software foi projetado (blindado) para seguir rigorosamente as diretrizes abaixo:
 
 Disponibilidade: Um equipamento só pode ser emprestado se seu status no banco de dados for disponivel = TRUE.
+
 Fluxo de Saída: Ao realizar um empréstimo, o sistema cria automaticamente um registro com status ATIVO e altera o status do equipamento para disponivel = FALSE.
+
 Fluxo de Retorno: Na devolução, o registro de empréstimo é marcado como FINALIZADO, a data de devolução é salva e o equipamento é liberado (disponivel = TRUE) para o próximo aluno.
+
 Segurança e Integridade: O sistema impede o registro de empréstimos para alunos ou equipamentos que não existam no cadastro, ou caso o item já esteja ocupado.
+
 Implementação Técnica
-📂 Estrutura de Pastas (Padrão DAO)
+
+Estrutura de Pastas (Padrão DAO)
 A arquitetura foi dividida em camadas para facilitar a manutenção:
 src/
 └── br.edu.ifpa.laboratorio/
