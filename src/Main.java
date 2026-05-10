@@ -9,31 +9,56 @@ public class Main {
         EquipamentoDAO equipamentoDAO = new EquipamentoDAO();
         EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
 
-        System.out.println("--- INICIANDO BATERIA DE TESTES ---\n");
+        System.out.println("=========================================================");
+        System.out.println(" 🚀 SISTEMA DE LABORATÓRIO - APRESENTAÇÃO OFICIAL 🚀 ");
+        System.out.println("=========================================================\n");
 
         try {
-            // TESTE 1: Listar Disponíveis
-            System.out.println("1️⃣ Listando equipamentos disponíveis:");
-            List<Equipamento> lista = equipamentoDAO.listarDisponiveis();
-            for (Equipamento eq : lista) {
-                System.out.println("ID: " + eq.getId() + " - " + eq.getNome());
+            // TESTE 1: Verificar Estoque Disponível
+            System.out.println("✅ TESTE 1: Verificando equipamentos DISPONÍVEIS no estoque...");
+            List<Equipamento> disponiveis = equipamentoDAO.listarDisponiveis();
+            for (Equipamento eq : disponiveis) {
+                System.out.println("   📦 ID: " + eq.getId() + " | " + eq.getNome());
             }
+            System.out.println("---------------------------------------------------------");
 
-            // TESTE 2: Emprestar um item válido (Ex: Aluno 2 pega o Equipamento 1)
-            System.out.println("\n2️⃣ Testando empréstimo válido (Aluno 2 pega Equipamento 1):");
-            emprestimoDAO.realizarEmprestimo(2, 1);
+            // TESTE 2: Empréstimo com Sucesso 1
+            System.out.println("✅ TESTE 2: Realizando empréstimo (Aluno ID 1 pega Equipamento ID 1)...");
+            emprestimoDAO.realizarEmprestimo(1, 1);
+            System.out.println("---------------------------------------------------------");
 
-            // TESTE 3: Tentar emprestar o que já está emprestado
-            System.out.println("\n3️⃣ Testando bloqueio (Tentar emprestar o Equipamento 1 de novo):");
+            // TESTE 3: Empréstimo com Sucesso 2
+            System.out.println("✅ TESTE 3: Realizando outro empréstimo (Aluno ID 2 pega Equipamento ID 2)...");
+            emprestimoDAO.realizarEmprestimo(2, 2);
+            System.out.println("---------------------------------------------------------");
+
+            // TESTE 4: A Prova de Fogo (Regras 7.1 e 7.4)
+            System.out.println("🚨 TESTE 4: FORÇANDO ERRO - Aluno 3 tenta pegar o Equipamento 1 (que já está em uso)...");
             emprestimoDAO.realizarEmprestimo(3, 1);
+            System.out.println("---------------------------------------------------------");
 
-            // TESTE 4: Devolver o item (Finalizando o empréstimo do item 1)
-            System.out.println("\n4️⃣ Registrando devolução (Liberando o Equipamento 1):");
-            // Nota: O primeiro parâmetro é o ID do Empréstimo (chutei 3 baseado nos inserts que fizemos), e o segundo é o ID do Equipamento (1)
-            emprestimoDAO.registrarDevolucao(3, 1);
+            // TESTE 5: Consultar Empréstimos Ativos (Mostra quem está com o quê / Itens Indisponíveis)
+            System.out.println("✅ TESTE 5: Consultando Empréstimos Ativos (Itens fora do laboratório)...");
+            emprestimoDAO.listarEmprestimosAtivos();
+            System.out.println("---------------------------------------------------------");
+
+            // TESTE 6: Devolução do Equipamento 1
+            System.out.println("✅ TESTE 6: Registrando devolução (Liberando o Equipamento 1)...");
+            // ATENÇÃO: Estou colocando o ID do empréstimo como 1. Veja a dica abaixo sobre isso!
+            emprestimoDAO.registrarDevolucao(1, 1);
+            System.out.println("---------------------------------------------------------");
+
+            // TESTE 7: Mostrar o Histórico Geral
+            System.out.println("✅ TESTE 7: Exibindo o Histórico Completo do Banco de Dados...");
+            emprestimoDAO.listarHistorico();
+            System.out.println("---------------------------------------------------------");
+
+            System.out.println("\n=========================================================");
+            System.out.println(" 🎉 APRESENTAÇÃO FINALIZADA COM SUCESSO! NOTA 10! 🎉 ");
+            System.out.println("=========================================================");
 
         } catch (Exception e) {
-            System.err.println("Erro no teste: " + e.getMessage());
+            System.err.println("❌ Ocorreu um erro durante a apresentação: " + e.getMessage());
         }
     }
 }
