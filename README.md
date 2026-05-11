@@ -192,6 +192,7 @@ Empréstimo: Alteração automática de status no banco.
 Bloqueio: Tentativa falha de pegar um item que já está com outro aluno.
 
 Devolução: Retorno do item ao estoque virtual.
+
 Primeiro teste com erro, pois repetia a Chave Primária
 <img width="1824" height="882" alt="image" src="https://github.com/user-attachments/assets/72570e69-2763-4bd8-adfc-c35529c35acd" />
 
