@@ -13,7 +13,7 @@ O histórico de uso seja preservado para fins de manutenção e inventário.
 Desenvolvido para a disciplina de Engenharia de Software II, o foco principal foi aplicar os conceitos de modelagem UML, persistência de dados e as melhores práticas de Programação Orientada a Objetos.
 
 Tecnologias Utilizadas
-Linguagem: Java 21 (JDK 21)
+Linguagem: Java 25 (JDK 25)
 
 Banco de Dados: MySQL 8.0
 
