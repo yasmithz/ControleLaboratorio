@@ -192,8 +192,16 @@ Empréstimo: Alteração automática de status no banco.
 Bloqueio: Tentativa falha de pegar um item que já está com outro aluno.
 
 Devolução: Retorno do item ao estoque virtual.
+Primeiro teste com erro, pois repetia a Chave Primária
+<img width="1824" height="882" alt="image" src="https://github.com/user-attachments/assets/72570e69-2763-4bd8-adfc-c35529c35acd" />
 
-[INSERIR AQUI O PRINT DO CONSOLE DO INTELLIJ COM OS RESULTADOS]
+Segundo corrigido
+<img width="1804" height="828" alt="image" src="https://github.com/user-attachments/assets/da397ea1-25c9-4eb2-b8b0-9b932ccb2e8b" />
+
+<img width="1023" height="592" alt="image" src="https://github.com/user-attachments/assets/e6876e0a-f3b0-4fd0-b17f-934df9db97c2" />
+
+<img width="917" height="694" alt="image" src="https://github.com/user-attachments/assets/cc80b6a6-112d-448d-bc80-5a6fdc3a31f9" />
+
 
 Como Rodar o Projeto
 Crie o banco de dados controle_laboratorio usando o script SQL incluso.
