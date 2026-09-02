@@ -1,4 +1,4 @@
-🖥️ Sistema de Controle de Empréstimo de Laboratório
+Sistema de Controle de Empréstimo de Laboratório
 Visão Geral do Projeto
 O Sistema de Controle de Empréstimo de Laboratório nasceu da necessidade de organizar o fluxo de materiais em laboratórios de hardware e redes. Em um ambiente acadêmico ou técnico, o controle manual de componentes como gabinetes, periféricos, processadores e cabos é propenso a falhas, perdas e conflitos de agendamento.
 
